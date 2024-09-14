@@ -180,12 +180,25 @@ const UI = function() {
         Game.resetGrid();
         Grid.resetGrid();
         Game.won = false;
+        console.log('hi');
     }
 
-    const updateScore = function() {
+    const updateScore = async function() {
         p1Score.textContent = score[0];
 
         p2Score.textContent = score[1];
+
+        let response = await fetch('http://localhost:8080/' + score[0],
+            {mode: 'cors'}
+        );
+
+        console.log('the response', response);
+
+        let response2 = await response.json();
+
+        console.log('response2', response2);
+
+        // player 1 and 2 highscores
 
         console.log(score);
     }
