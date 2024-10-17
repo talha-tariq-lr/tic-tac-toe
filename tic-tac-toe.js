@@ -9,7 +9,7 @@ const Game = function (){
 
     const initGrid = function() {
         for (let i=0; i<9; i++)
-        gridArray.push(' ');
+        gridArray.push(' sdf');
     }
     
     initGrid();
