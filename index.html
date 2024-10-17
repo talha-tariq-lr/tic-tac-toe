@@ -11,11 +11,23 @@
 </head>
 <body>
 
+    <div>
+        <form>
+            <p>Usernames</p>
+            <label for="player1UserName">Player 1 Username</label>
+            <input id="player1UserNameInput" type="text" required>
+            <label for="player2UserName">Player 2 Username</label>
+            <input id="player2UserNameInput" type="text" required>
+            <button id="usernameChangeButton">Submit</button>
+        </form>
+        
+    </div>
+
     <div id="results">
-        <h1>Player 1: </h1>
+        <h1 id="player1UserName">Player 1: </h1>
         <h1 id="p1Score">0</h1>
 
-        <h1>Player 2: </h1>
+        <h1 id="player2UserName">Player 2: </h1>
         <h1 id="p2Score">0</h1>
     </div>
 

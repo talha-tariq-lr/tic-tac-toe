@@ -7,6 +7,10 @@ const Game = function (){
 
     gridArray = [];
 
+    let player1UserName = "Player 1";
+
+    let player2UserName = "Player 2";
+
     const initGrid = function() {
         for (let i=0; i<9; i++)
         gridArray.push(' ');
@@ -180,7 +184,7 @@ const UI = function() {
         Game.resetGrid();
         Grid.resetGrid();
         Game.won = false;
-        console.log('hi');
+        console.log('dsafdjsafdjsfkl');
     }
 
     const updateScore = async function() {
@@ -188,22 +192,41 @@ const UI = function() {
 
         p2Score.textContent = score[1];
 
-        let response = await fetch('http://localhost:8080/' + score[0],
-            {mode: 'cors'}
-        );
+        // let response = await fetch('http://localhost:8080/' + score[0],
+        //     {mode: 'cors'}
+        // );
 
-        console.log('the response', response);
+        // console.log('the response', response);
 
-        let response2 = await response.json();
+        // let response2 = await response.json();
 
-        console.log('response2', response2);
+        // console.log('response2', response2);
 
-        // player 1 and 2 highscores
+        // // player 1 and 2 highscores
 
-        console.log(score);
+        // console.log(score);
     }
 
-    const resetGame = function () {
+    const resetGame = async function () {
+
+        let data = {
+            player1UserName: Game.player1UserName,
+            player2UserName: Game.player2UserName,
+            player1Score: Game.p1Score,
+            player2Score: Game.p2Score
+        };
+
+        let response = await fetch('http://localhost:8080/scores',
+        {method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data),
+        mode: 'cors'});
+
+        let response2 = await response.json();
+        console.log(response2);
+
         resetGrid();
 
         score[0] = 0;
@@ -220,11 +243,23 @@ const UI = function() {
 
     uiDiv.appendChild(resetGameButton);
     
-    console.log('exdecuted?')
-
 
     return {score, updateScore}
 }();
+
+const changeUserName = function(e) {
+    e.preventDefault();
+    Game.player1UserName = document.querySelector("#player1UserNameInput").value;
+    Game.player2UserName = document.querySelector("#player2UserNameInput").value;
+
+    document.querySelector("#player1UserName").textContent = Game.player1UserName;
+    document.querySelector("#player2UserName").textContent = Game.player2UserName;
+}
+
+
+let userNameUpdateButton = document.querySelector("#usernameChangeButton");
+userNameUpdateButton.addEventListener('click', changeUserName);
+
 
 Grid.init();
 
