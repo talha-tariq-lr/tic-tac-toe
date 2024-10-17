@@ -13,7 +13,7 @@ const Game = function (){
 
     const initGrid = function() {
         for (let i=0; i<9; i++)
-        gridArray.push(' sdf');
+        gridArray.push(' ');
     }
     
     initGrid();
@@ -184,7 +184,7 @@ const UI = function() {
         Game.resetGrid();
         Grid.resetGrid();
         Game.won = false;
-        console.log('dsafdjsafdjsfkldsfsdf');
+        console.log('TRY AGAINN');
     }
 
     const updateScore = async function() {
