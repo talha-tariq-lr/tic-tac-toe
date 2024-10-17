@@ -184,7 +184,7 @@ const UI = function() {
         Game.resetGrid();
         Grid.resetGrid();
         Game.won = false;
-        console.log('dsafdjsafdjsfkl');
+        console.log('dsafdjsafdjsfkldsfsdf');
     }
 
     const updateScore = async function() {
