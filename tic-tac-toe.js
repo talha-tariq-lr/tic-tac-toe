@@ -184,7 +184,6 @@ const UI = function() {
         Game.resetGrid();
         Grid.resetGrid();
         Game.won = false;
-        console.log('TRY AGAINN');
     }
 
     const updateScore = async function() {
@@ -212,11 +211,15 @@ const UI = function() {
         let data = {
             player1UserName: Game.player1UserName,
             player2UserName: Game.player2UserName,
-            player1Score: Game.p1Score,
-            player2Score: Game.p2Score
+            player1Score: p1Score.textContent,
+            player2Score: p2Score.textContent
         };
 
-        let response = await fetch('http://localhost:8080/scores',
+        console.log(Game.player1UserName);
+
+        console.log("data", data);
+
+        let response = await fetch('http://localhost:8080/score',
         {method: "POST",
         headers: {
             'Content-Type': 'application/json'
